@@ -1,7 +1,10 @@
 from flask import url_for
 from wtforms.fields import Field
 from wtforms.widgets import HiddenInput
-from wtforms.compat import text_type
+try:
+    from wtforms.compat import text_type
+except ImportError:
+    from builtins import str as text_type
 
 
 def register_template_utils(app):

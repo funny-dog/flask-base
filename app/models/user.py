@@ -1,6 +1,6 @@
 from flask import current_app
 from flask_login import AnonymousUserMixin, UserMixin
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from itsdangerous import URLSafeTimedSerializer as Serializer
 from itsdangerous import BadSignature, SignatureExpired
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -80,7 +80,7 @@ class User(UserMixin, db.Model):
 
     @password.setter
     def password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password, method='pbkdf2:sha256')
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
@@ -88,24 +88,24 @@ class User(UserMixin, db.Model):
     def generate_confirmation_token(self, expiration=604800):
         """Generate a confirmation token to email a new user."""
 
-        s = Serializer(current_app.config['SECRET_KEY'], expiration)
-        return s.dumps({'confirm': self.id})
+        s = Serializer(secret_key=current_app.config['SECRET_KEY'], salt='confirm-email')
+        return s.dumps({'confirm': self.id, 'exp': expiration})
 
     def generate_email_change_token(self, new_email, expiration=3600):
         """Generate an email change token to email an existing user."""
-        s = Serializer(current_app.config['SECRET_KEY'], expiration)
-        return s.dumps({'change_email': self.id, 'new_email': new_email})
+        s = Serializer(secret_key=current_app.config极速赛车开奖直播平台['SECRET_KEY'], salt='confirm-email')
+        return s.dumps({'change_email': self.id, 'new_email': new_email, 'exp': expiration})
 
     def generate_password_reset_token(self, expiration=3600):
         """
         Generate a password reset change token to email to an existing user.
         """
-        s = Serializer(current_app.config['SECRET_KEY'], expiration)
-        return s.dumps({'reset': self.id})
+        s = Serializer(secret_key=current_app.config['SECRET_KEY'], salt='confirm-email')
+        return s.dumps({'reset': self.id, 'exp': expiration})
 
     def confirm_account(self, token):
         """Verify that the provided token is for this user's id."""
-        s = Serializer(current_app.config['SECRET_KEY'])
+        s = Serializer(secret_key=current_app.config['SECRET_KEY'], salt='confirm-email')
         try:
             data = s.loads(token)
         except (BadSignature, SignatureExpired):
@@ -119,7 +119,7 @@ class User(UserMixin, db.Model):
 
     def change_email(self, token):
         """Verify the new email for this user."""
-        s = Serializer(current_app.config['SECRET_KEY'])
+        s = Serializer(secret_key=current_app.config['SECRET_KEY'], salt='confirm-email')
         try:
             data = s.loads(token)
         except (BadSignature, SignatureExpired):
@@ -138,7 +138,7 @@ class User(UserMixin, db.Model):
 
     def reset_password(self, token, new_password):
         """Verify the new password for this user."""
-        s = Serializer(current_app.config['SECRET_KEY'])
+        s = Serializer(secret_key=current_app.config['SECRET_KEY'], salt='confirm-email')
         try:
             data = s.loads(token)
         except (BadSignature, SignatureExpired):

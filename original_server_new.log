@@ -1,0 +1,46 @@
+Importing environment from .env file
+THIS APP IS IN DEBUG MODE.                 YOU SHOULD NOT SEE THIS IN PRODUCTION.
+Flask Base 应用服务器启动中...
+服务器地址: http://127.0.0.1:5000
+调试模式: True
+数据库: sqlite:////root/projects/flask-base/data-dev.sqlite
+--------------------------------------------------
+正在初始化数据库...
+数据库初始化完成！
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [19/Sep/2025 16:21:16] "[37mGET /account/login HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:21:16] "[31m[1mPOST /account/login HTTP/1.1[0m" 400 -
+127.0.0.1 - - [19/Sep/2025 16:21:16] "[37mGET /account/register HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:21:16] "[37mGET / HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:18] "[37mGET / HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:18] "[37mGET /static/webassets-external/eef7346eec8478be3d80a8137ae462a9_semantic.min.css HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:18] "[37mGET /static/styles/app.css?fdfc7b77 HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:20] "[37mGET /account/login HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:42] "[32mPOST /account/login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [19/Sep/2025 16:22:42] "[37mGET / HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:42] "[37mGET /static/webassets-external/6dcb662747c95b962b2f67be290b20aa_jquery.min.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:42] "[37mGET /static/webassets-external/1101724d96626d6bdae557db01e4a395_app.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:42] "[37mGET /static/webassets-external/10f3f68a2a85e84d91b965af2bd9af33_semantic.min.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:42] "[37mGET /static/webassets-external/51d88757e693216a6fb8cefca585527c_tablesort.min.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:42] "[37mGET /static/webassets-external/c8e5d6b9e4ea359d0622ff85e0a61fa9_zxcvbn.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:46] "[37mGET /admin/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:48] "[37mGET /admin/users HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:52] "[37mGET /admin/new-user HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:56] "[32mGET /account/logout HTTP/1.1[0m" 302 -
+127.0.0.1 - - [19/Sep/2025 16:22:56] "[37mGET / HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:56] "[37mGET /static/webassets-external/6dcb662747c95b962b2f67be290b20aa_jquery.min.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:56] "[37mGET /static/webassets-external/51d88757e693216a6fb8cefca585527c_tablesort.min.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:56] "[37mGET /static/webassets-external/1101724d96626d6bdae557db01e4a395_app.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:56] "[37mGET /static/webassets-external/10f3f68a2a85e84d91b965af2bd9af33_semantic.min.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:56] "[37mGET /static/webassets-external/c8e5d6b9e4ea359d0622ff85e0a61fa9_zxcvbn.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:22:57] "[37mGET /account/register HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:23:24] "[37mGET /account/login HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:23:42] "[37mGET /about HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:23:42] "[37mGET /static/ckeditor/ckeditor.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:23:47] "[37mGET /account/register HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Sep/2025 16:25:25] "[31m[1mPOST /account/register HTTP/1.1[0m" 400 -

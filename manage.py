@@ -2,10 +2,10 @@
 import os
 import subprocess
 
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 from flask_script import Manager, Shell, Server
-from redis import Redis
-from rq import Connection, Queue, Worker
+# from redis import Redis
+# from rq import Connection, Queue, Worker
 
 from app import create_app, db
 from app.models import Role, User
@@ -21,7 +21,6 @@ def make_shell_context():
 
 
 manager.add_command('shell', Shell(make_context=make_shell_context))
-manager.add_command('db', MigrateCommand)
 manager.add_command('runserver', Server(host="0.0.0.0"))
 
 
@@ -92,16 +91,9 @@ def setup_general():
 @manager.command
 def run_worker():
     """Initializes a slim rq task queue."""
-    listen = ['default']
-    conn = Redis(
-        host=app.config['RQ_DEFAULT_HOST'],
-        port=app.config['RQ_DEFAULT_PORT'],
-        db=0,
-        password=app.config['RQ_DEFAULT_PASSWORD'])
-
-    with Connection(conn):
-        worker = Worker(map(Queue, listen))
-        worker.work()
+    # RQ worker disabled for now due to import issues
+    print("RQ worker is disabled due to dependency issues.")
+    pass
 
 
 @manager.command

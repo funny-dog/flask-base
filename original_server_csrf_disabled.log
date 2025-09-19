@@ -1,0 +1,118 @@
+Importing environment from .env file
+THIS APP IS IN DEBUG MODE.                 YOU SHOULD NOT SEE THIS IN PRODUCTION.
+Flask Base 应用服务器启动中...
+服务器地址: http://127.0.0.1:5000
+调试模式: True
+数据库: sqlite:////root/projects/flask-base/data-dev.sqlite
+--------------------------------------------------
+正在初始化数据库...
+数据库初始化完成！
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[2025-09-19 16:33:23,361] ERROR in app: Exception on /account/register [POST]
+Traceback (most recent call last):
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/flask-base/app/account/views.py", line 81, in register
+    return render_template('account/register.html', form=form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+           ^^^^^^^^
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/root/projects/flask-base/app/templates/account/register.html", line 3, in <module>
+    {% import 'macros/check_password.html' as check %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/flask-base/app/templates/layouts/base.html", line 42, in <module>
+    {% if csrf_token()|safe %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+127.0.0.1 - - [19/Sep/2025 16:33:23] "[35m[1mPOST /account/register HTTP/1.1[0m" 500 -
+Error on request:
+Traceback (most recent call last):
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/projects/flask-base/app/account/views.py", line 81, in register
+    return render_template('account/register.html', form=form)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/root/projects/flask-base/app/templates/account/register.html", line 3, in <module>
+    {% import 'macros/check_password.html' as check %}
+  File "/root/projects/flask-base/app/templates/layouts/base.html", line 42, in <module>
+    {% if csrf_token()|safe %}
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/werkzeug/serving.py", line 323, in run_wsgi
+    execute(self.server.app)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/werkzeug/serving.py", line 312, in execute
+    application_iter = app(environ, start_response)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/app.py", line 1879, in handle_exception
+    server_error = handler(server_error)
+  File "/root/projects/flask-base/app/main/errors.py", line 18, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/root/projects/flask-base/venv/lib/python3.12/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/root/projects/flask-base/app/templates/errors/500.html", line 1, in <module>
+    {% extends 'layouts/base.html' %}
+  File "/root/projects/flask-base/app/templates/layouts/base.html", line 42, in <module>
+    {% if csrf_token()|safe %}
+jinja2.exceptions.UndefinedError: 'csrf_token' is undefined

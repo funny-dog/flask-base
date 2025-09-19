@@ -12,7 +12,15 @@ from flask_login import (
     login_user,
     logout_user,
 )
-from flask_rq import get_queue
+# from flask_rq import get_queue
+
+# Temporary replacement for disabled RQ functionality
+def get_queue():
+    class MockQueue:
+        def enqueue(self, *args, **kwargs):
+            print("NOTE: RQ task queue is disabled. Task would be:", args[0] if args else "unknown")
+            return None
+    return MockQueue()
 
 from app import db
 from app.account.forms import (
