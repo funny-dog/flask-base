@@ -7,14 +7,14 @@ from wtforms.fields import (
     StringField,
     SubmitField,
 )
-from wtforms.fields import EmailField
+from wtforms.fields import StringField
 from wtforms.validators import Email, EqualTo, InputRequired, Length
 
 from app.models import User
 
 
 class LoginForm(FlaskForm):
-    email = EmailField(
+    email = StringField(
         'Email', validators=[InputRequired(),
                              Length(1, 64),
                              Email()])
@@ -30,7 +30,7 @@ class RegistrationForm(FlaskForm):
     last_name = StringField(
         'Last name', validators=[InputRequired(),
                                  Length(1, 64)])
-    email = EmailField(
+    email = StringField(
         'Email', validators=[InputRequired(),
                              Length(1, 64),
                              Email()])
@@ -51,7 +51,7 @@ class RegistrationForm(FlaskForm):
 
 
 class RequestResetPasswordForm(FlaskForm):
-    email = EmailField(
+    email = StringField(
         'Email', validators=[InputRequired(),
                              Length(1, 64),
                              Email()])
@@ -62,7 +62,7 @@ class RequestResetPasswordForm(FlaskForm):
 
 
 class ResetPasswordForm(FlaskForm):
-    email = EmailField(
+    email = StringField(
         'Email', validators=[InputRequired(),
                              Length(1, 64),
                              Email()])
@@ -107,7 +107,7 @@ class ChangePasswordForm(FlaskForm):
 
 
 class ChangeEmailForm(FlaskForm):
-    email = EmailField(
+    email = StringField(
         'New email', validators=[InputRequired(),
                                  Length(1, 64),
                                  Email()])

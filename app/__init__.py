@@ -7,19 +7,8 @@ from flask_login import LoginManager
 from flask_mail import Mail
 # from flask_rq import RQ
 # Custom SQLAlchemy to fix compatibility issues
-from flask_sqlalchemy import SQLAlchemy as OriginalSQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import event
-
-class SQLAlchemy(OriginalSQLAlchemy):
-    def apply_driver_hacks(self, app, sa_url, options):
-        # Fix for SQLAlchemy 1.4+ compatibility
-        if sa_url.drivername.startswith('sqlite'):
-            # For SQLite, ensure the database path is absolute
-            import os
-            if not os.path.isabs(sa_url.database):
-                sa_url.database = os.path.join(app.root_path, sa_url.database)
-        # Skip the problematic parent method
-        # super().apply_driver_hacks(self, app, sa_url, options)
 from flask_wtf import CSRFProtect
 
 from app.assets import app_css, app_js, vendor_css, vendor_js
@@ -28,7 +17,7 @@ from config import config as Config
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 mail = Mail()
-db = SQLAlchemy(engine_options={'pool_pre_ping': True})
+db = SQLAlchemy()
 csrf = CSRFProtect()
 compress = Compress()
 

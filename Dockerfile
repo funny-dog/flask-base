@@ -5,8 +5,9 @@ FROM python:3.8-alpine
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 
 # Ruby sass
-RUN apk add make ruby-dev
-RUN gem install sass
+RUN apk add --no-cache make ruby-dev ruby-full gcc musl-dev libxml2-dev libxslt-dev
+RUN gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+RUN gem install sass -v 3.7.4
 
 #MAINTANER Your Name "youremail@domain.tld"
 ENV MAIL_USERNAME=yourmail@test.com
@@ -16,7 +17,8 @@ ENV SECRET_KEY=SuperRandomStringToBeUsedForEncryption
 COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
-RUN pip3 install -r requirements.txt
+ENV PIP_TIMEOUT=600
+RUN pip3 install -r requirements.txt --retries 5 --timeout 600
 ENV PYTHONIOENCODING=UTF-8
 RUN pip3 install sqlalchemy_utils==0.38.3 flask_dance==5.1.0 Flask-Caching==1.11.1 python-gitlab==3.10.0
 

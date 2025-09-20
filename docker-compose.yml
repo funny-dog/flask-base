@@ -10,9 +10,9 @@ services:
     environment: 
       # set environment variables
       REDISTOGO_URL: http://redis:6379
-      DEV_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      TEST_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      DEV_DATABASE_URL: postgres://admin:example@postgres:5432/mydatabase
+      TEST_DATABASE_URL: postgres://admin:example@postgres:5432/mydatabase
+      DATABASE_URL: postgres://admin:example@postgres:5432/mydatabase
   
   worker:
     build:
@@ -23,9 +23,9 @@ services:
     environment: 
       # set environment variables
       REDISTOGO_URL: http://redis:6379
-      DEV_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      TEST_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      DEV_DATABASE_URL: postgres://admin:example@postgres:5432/mydatabase
+      TEST_DATABASE_URL: postgres://admin:example@postgres:5432/mydatabase
+      DATABASE_URL: postgres://admin:example@postgres:5432/mydatabase
 
   postgres:
     image: postgres
